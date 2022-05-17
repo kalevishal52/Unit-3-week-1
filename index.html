@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Throw Dice</title>
+    <style>
+        body{
+            padding-top: 50px;
+        }
+        #winner{
+            display: block;
+            border: 1px solid black;
+            margin-bottom: 20px;
+            font-size: 65px;
+        }
+        #member-1,
+        #member-2,
+        #member-3 {
+            display: inline;
+            padding: 10px 50px;
+            /* margin-top: 50px; */
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <div id="winner">sss</div>
+    <div id="member-1">2</div>
+    <div id="member-2">3</div>
+    <div id="member-3">1</div>
+    <button id="roll">ROLL THE DICE</button>
+</body>
+</html>
+
+<script>
+    document.querySelector("#roll").addEventListener("click",rollcube)
+
+    function rollcube(){
+        document.querySelector("#member-1").style.backgroundColor = "white"
+        document.querySelector("#member-2").style.backgroundColor = "white"
+        document.querySelector("#member-3").style.backgroundColor = "white"
+            var m1 = document.querySelector("#member-1").innerText =  Math.floor(Math.random()*6+1)
+            var m2 = document.querySelector("#member-2").innerText =  Math.floor(Math.random()*6+1)
+            var m3 = document.querySelector("#member-3").innerText =  Math.floor(Math.random()*6+1)
+            if(m1 > m2 && m1 > m3)
+            {
+                document.querySelector("#winner").innerText = "Member 1 is winner " 
+                document.querySelector("#member-1").style.backgroundColor = "green"
+            }
+            else if(m2 > m1 && m2 > m3)
+            {
+                document.querySelector("#winner").innerText = "Member 2 is winner " 
+                document.querySelector("#member-2").style.backgroundColor = "green"
+            }
+            else if(m3 > m1 && m3 > m2)
+            {
+                document.querySelector("#winner").innerText = "Member 3 is winner " 
+                document.querySelector("#member-3").style.backgroundColor = "green"
+            }
+            if((m1 == m2)){
+                document.querySelector("#member-1").style.backgroundColor = "blue"
+                document.querySelector("#member-2").style.backgroundColor = "blue"
+            }
+            if((m2 == m3)){
+                document.querySelector("#member-3").style.backgroundColor = "blue"
+                document.querySelector("#member-2").style.backgroundColor = "blue"
+            }
+            if((m1 == m3)){
+                document.querySelector("#member-1").style.backgroundColor = "blue"
+                document.querySelector("#member-3").style.backgroundColor = "blue"
+            }
+    }
+
+
+</script>
