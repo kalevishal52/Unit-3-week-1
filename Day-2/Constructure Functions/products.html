@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <style>
+        h2{text-align: right;} 
+        #container{
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            grid-template-rows: auto;
+            border: 1px solid red;
+            gap: 20px ;
+        }
+        #container div img{
+            width: 100%;
+        }
+
+        #sold{
+            /* background-color: red; */
+        }
+        
+    </style>
+</head>
+<body>
+    <h2> go to <a href="e-commerce.html">Upload Page</a> </h2>
+    <div id="container">
+    </div>
+
+</body>
+</html>
+
+<script>
+    var productData = JSON.parse(localStorage.getItem("Products")) ;
+    console.log(productData)
+    displayData(productData) 
+
+    function displayData(productData)
+    {
+        document.querySelector("#container").innerHTML = null
+        productData.forEach(function(element,i) {
+        var card = document.createElement("div") ;
+        var img = document.createElement("img") ;
+        var pName = document.createElement("div") 
+        var catagory = document.createElement("div") 
+        var gender = document.createElement("div") 
+        var sold = document.createElement("div")  ;
+        var remove = document.createElement("button") 
+        var soldbtn = document.createElement("button") 
+        
+
+        img.src = element.imageUrl ;
+        pName.innerText = element.name ;
+        catagory.innerText = element.catagory ;
+        gender.innerText = element.gender ;
+        sold.innerText = element.sold ;
+        remove.innerText = "Delete"
+        remove.addEventListener("click",function(){
+            delFunction(element,i)
+        })
+        soldbtn.innerText = "Sold" ;
+        soldbtn.setAttribute("id","sold")
+        soldbtn.addEventListener("click",function(){
+            solcFunction(element,i)
+        })
+
+        
+
+
+        card.append(img,pName,catagory,gender,sold,remove,soldbtn) 
+        document.querySelector("#container").append(card) ;
+        
+    });
+
+    }
+    
+
+    function  delFunction(element,index){
+        // console.log(element,index)
+        productData.splice(index,1)
+        console.log(productData) ;
+        localStorage.setItem("Products",JSON.stringify(productData))
+        displayData(productData)
+    }
+
+    function solcFunction(element,index){
+        var present = element.sold 
+        console.log(present) ; 
+        if(present == "false")
+        {
+            element.sold = "ture"
+
+        }
+        else {
+            element.sold = "false"
+        }
+        if(element.sold == true) {
+            document.querySelector("#sold").innerText =" jiji"
+        }
+        console.log(productData) 
+        localStorage.setItem("Products",JSON.stringify(productData))
+        displayData(productData)  
+    }
+</script>

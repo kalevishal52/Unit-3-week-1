@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h2{
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <h2> go to <a href="products.html">Product Page</a> </h2>
+    <form >
+        <input type="text" id="productName" placeholder="product name">
+        <input type="text" id="catagory" placeholder="catagory">
+        <input type="text" id="image" placeholder="Image Url">
+        <input type="number" id="price" placeholder="price">
+        <select name="" id="gender">
+            <option value="">Select Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select>
+        <!-- <label for="false" >false</label><input type="radio" id="false" placeholder=""> -->
+        <select name="sold" id="sold">
+            <option value="false">flase</option>
+        </select>
+        <input type="submit">
+    </form>
+</body>
+</html>
+
+<script>
+    var form = document.querySelector("form") ;
+    form.addEventListener("submit",getData)
+    
+    function Takedata(name,catagory,image,price,gender,sold){
+        this.name = name ;
+        this.catagory = catagory ;
+        this.imageUrl = image ;
+        this.gender = gender ;
+        this.price = price ;
+        this.sold = sold ;
+    }
+
+    var data = JSON.parse(localStorage.getItem("Products")) || [] ;
+    function getData(){
+        event.preventDefault() ;
+        var name = form.productName.value ;
+        var catagory = form.catagory.value ;
+        var imageUrl = form.image.value ;
+        var price = form.price.value ;
+        var gender = form.gender.value ; 
+        var sold = form.sold.value;
+
+        var output = new Takedata(name,catagory,imageUrl,price,gender,sold) 
+        data.push(output)
+        
+        console.log(data) 
+        localStorage.setItem("Products",JSON.stringify(data))
+    }
+    
+
+    // function Player(n,a){
+    //     this.name = n  ;
+    //     this.age = a ;
+    // }
+    // var p1 = new Player("viasal", 22) 
+    // console.log(p1)
+
+    // function Player(n,a){
+    //     this.name = n  ;
+    //     this.age = a ;
+    //     this.conso = function(){
+    //         console.log(this)
+    //     }
+    // }
+    // var p1 = new Player("viasal", 22) 
+    // console.log(p1)
+    // p1.conso()
+
+
+</script>
