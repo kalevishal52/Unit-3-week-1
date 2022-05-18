@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tata Industries</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+
+    // var carProto = {
+    //     wheel: 4 ,
+    //     door: 4 ,
+    //     mirror: 2,
+    //     stearign: 1,
+    // }
+
+    // var car1 = Object.create(carProto) 
+    // var car2 = Object.create(carProto) 
+    // var car3 = Object.create(carProto) ;
+    // console.log(car1)
+    // console.log(car2)
+    // console.log(car3)
+
+    function carProto(name,seater,engin){
+        this.wheels = 4 ;
+        this.door = 4 ;
+        this.mirrors = 2 ;
+        this.steating = 1  ;
+        this.name = name ;
+        this.seater = seater ;
+        this.engin = engin ;
+        this.brand = "TATA"
+    }
+
+    var car1 = new carProto("nano",4,"800cc")
+    var car2 = new carProto("Harrier",7,"1900cc") 
+    var car3 = new carProto("Tata Safari","7","2200cc")
+    console.log(car1)
+    console.log(car2)
+    console.log(car3)
+
+    
+
+</script>
